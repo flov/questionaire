@@ -1,4 +1,10 @@
+import { combineReducers } from "redux";
+
 import menuItems from "./menuItems";
 
-export default menuItems;
+const rootReducer = combineReducers({
+  menuItems,
+});
+
+export default rootReducer;
 
