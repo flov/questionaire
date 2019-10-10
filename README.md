@@ -28,7 +28,6 @@ for example:
   <EditableComponent type="text" />
   <EditableComponent type="image" />
   <EditableComponent type="video" />
-  <EditableComponent type="text" />
   <EditableComponent type="multipleChoiceQuestion" />
   <EditableComponent type="subjectiveQuestion" />
 </Intervention>
