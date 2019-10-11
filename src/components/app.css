@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+input, body{
+  font-family: 'Roboto', sans-serif;
+}
+
+input{
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus{
+  border-color:#999;
+}
+
+
+h1{
+  color: rgb(0, 140, 255);
+}
+
+h1 i{
+  color: blue;
+}
+
+.navigation-grid {
+  display: flex;
+  width: 800px;
+  align-items: flex-start;
+}
+
+.col-right {
+  flex: 2;
+}
+.col-left {
+  margin-right: 10px;
+  padding: 10px;
+  flex: 1;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+button.btn{
+  padding: 9px;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+span.btn{
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin: -6px 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+}
+
+.edit{
+  background: rgb(255, 153, 0);
+}
+
+.edit:hover{
+  background: rgb(255, 197, 39);
+  transform: rotate(360deg);
+}
+
+.delete{
+  background: red;
+}
+
+.delete:hover{
+  background: rgb(255, 69, 69);
+  transform: rotate(360deg);
+}
+
+.done{
+  background: rgb(0, 175, 0);
+}
+
+.done:hover{
+  background: rgb(0, 218, 0);
+  transform: rotate(360deg);
+}
+
+.cancel{
+  background: red;
+}
+
+.cancel:hover{
+  background: rgb(255, 69, 69);
+  transform: rotate(360deg);
+}
+
+.add{
+  background: rgb(0, 81, 255);
+  margin: 10px 0 0 50%;
+  transform: translate(-50%,0) scale(1);
+  animation: elasticZoom 0.3s;
+}
+
+.add:hover{
+  background-color: rgb(74, 115, 250);
+  transform: translate(-50%,0) scale(1.2);
+}
+
+@keyframes elasticZoom{
+  0%{
+    transform: translate(-50%,0) scale(0.5);
+  }
+  70%{
+    transform: translate(-50%,0) scale(1.1);
+  }
+  100%{
+    transform: translate(-50%,0) scale(1);
+  }
+}
+
+.flex-row{
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.flex-row div {
+  padding: 10px;
+}
+
+.done{
+  background: rgb(0, 175, 0);
+}
+
+.done:hover{
+  background: rgb(0, 218, 0);
+  transform: rotate(360deg);
+}
+
+.cancel{
+  background: red;
+}
+
+.cancel:hover{
+  background: rgb(255, 69, 69);
+  transform: rotate(360deg);
+}
+
+

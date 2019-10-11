@@ -25,11 +25,11 @@ an EditableComponent in the intervention on the right.
 for example:
 ```
 <Intervention>
-  <EditableComponent type="text" />
-  <EditableComponent type="image" />
-  <EditableComponent type="video" />
-  <EditableComponent type="multipleChoiceQuestion" />
-  <EditableComponent type="subjectiveQuestion" />
+  <Text />
+  <Image />
+  <Video />
+  <MultipleChoiceQuestion />
+  <SubjectiveQuestion />
 </Intervention>
 ```
 

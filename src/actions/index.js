@@ -1,15 +1,21 @@
-export const FIELD_ADD = "Add new field";
-export const READ_FIELDS = "fetch all fields";
+export const CREATE_DOCUMENT = "CREATE_DOCUMENT"
+export const READ_DOCUMENTS = "READ_DOCUMENTS"
+export const UPDATE_DOCUMENT = "UPDATE_DOCUMENT"
+export const DELETE_DOCUMENT = "DELETE_DOCUMENT"
 
-//dispatched when field needs to be created
-export const createField = (field) => ({
-  type: FIELD_ADD,
-  payload: { field }
+export const createDocument = (document) => ({
+  type: CREATE_DOCUMENT,
+  payload: { document },
 })
 
-//dispatched when all the items stored in redux store needs to be read
-export const readFields = () => ({
-  type: READ_FIELDS,
+export const updateDocument = (document) => ({
+  type: UPDATE_DOCUMENT,
+  payload: { document },
+})
+
+export const deleteDocument = (id) => ({
+  type: DELETE_DOCUMENT,
+  payload: { id },
 })
 
 export const CREATE = "Add new item";

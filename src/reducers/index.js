@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"
 
-import menuItems from "./menuItems";
+import menuItems from "./menuItems"
+import documents from "./documents"
 
 const rootReducer = combineReducers({
   menuItems,
-});
+  documents
+})
 
-export default rootReducer;
+export default rootReducer
 
