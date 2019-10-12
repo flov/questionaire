@@ -27,8 +27,6 @@ class VideoForm extends Component {
   }
 
   render() {
-    console.log(this.props.youTubeID, 'props')
-    console.log(this.state.youTubeID, 'state')
     return (
       <form className="flex-row">
         <div>

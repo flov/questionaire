@@ -12,7 +12,6 @@ class Video extends Component {
   }
 
   componentDidMount() {
-    console.log('video component did mount')
     const { youTubeID } = this.props;
     this.setState({ youTubeID })
   }
@@ -30,6 +29,7 @@ class Video extends Component {
       type: 'video',
       youTubeID
     }
+    this.setState({ youTubeID })
     this.props.handleUpdate(updatedVideo)
     this.handleCancel()
   }
@@ -39,7 +39,6 @@ class Video extends Component {
   }
 
   render() {
-    console.log("Video state", this.state)
     return (
       <>
         {!this.state.openEditForm ? (
