@@ -15,14 +15,14 @@ class Image extends Component {
 
   // calls parent function
   handleUpdate = ({ caption, imgSrc }) => {
-    const updatedVideo = {
+    const updatedDocument = {
       id: this.props.id,
       type: 'Image',
       caption,
       imgSrc,
     }
 
-    this.props.handleUpdate(updatedVideo)
+    this.props.handleUpdate(updatedDocument)
     this.toggleEditForm()
   }
 
