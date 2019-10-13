@@ -2,38 +2,78 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import VideoForm from './VideoForm';
 import Video from './Video';
 import Image from './Image';
 import Text from './Text';
-import { createDocument, updateDocument, deleteDocument } from '../actions'
+import SubjectiveQuestion from './SubjectiveQuestion';
+import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 
+import { createDocument, updateDocument, deleteDocument } from '../actions'
 
 class Intervention extends Component {
   handleAddVideoClick = () => {
     const newDocument = {
       id: uuid.v4(),
       youTubeID: 'GLy2rYHwUqY',
-      type: 'video'
+      type: 'Video'
+    }
+    this.props.createDocument(newDocument)
+  }
+
+  handleAddImageClick = () => {
+    const newDocument = {
+      id: uuid.v4(),
+      type: 'Image',
+      caption: 'example caption',
+      imgSrc: './example.png',
+    }
+    this.props.createDocument(newDocument)
+  }
+
+  handleAddTextClick = () => {
+    const newDocument = {
+      id: uuid.v4(),
+      type: 'Text',
+      text: 'lorem ipsum',
+    }
+    this.props.createDocument(newDocument)
+  }
+
+  handleAddMultipleChoiceClick = () => {
+    const newDocument = {
+      id: uuid.v4(),
+      type: 'MultipleChoiceQuestion',
+    }
+    this.props.createDocument(newDocument)
+  }
+
+  handleAddSubjectiveQuestionClick = () => {
+    const newDocument = {
+      id: uuid.v4(),
+      type: 'SubjectiveQuestion'
     }
     this.props.createDocument(newDocument)
   }
 
   handleUpdateDocument = (document) => this.props.updateDocument(document)
+
   handleDeleteDocument = (id) => this.props.deleteDocument(id)
 
   showDocument(document) {
-    switch (document.type) {
-      case 'video':
-        return <Video {...document}
-          key={document.id}
-          handleDelete={this.handleDeleteDocument}
-          handleUpdate={this.handleUpdateDocument} />
-      case 'image':
-        return <Image {...document} />
-      case 'text':
-        return <Text {...document} />
+    // mapping the type string to the component
+    const components = {
+      "Video": Video,
+      "Image": Image,
+      "Text": Text,
+      "SubjectiveQuestion": SubjectiveQuestion,
+      "MultipleChoiceQuestion": MultipleChoiceQuestion,
     }
+    const Component = components[document.type]
+
+    return <Component {...document}
+      key={document.id}
+      handleDelete={this.handleDeleteDocument}
+      handleUpdate={this.handleUpdateDocument} />
   }
 
   render() {
@@ -46,22 +86,22 @@ class Intervention extends Component {
             </button>
           </div>
           <div>
-            <button className="add btn">
+            <button onClick={this.handleAddImageClick} className="add btn">
               Add Image
             </button>
           </div>
           <div>
-            <button className="add btn">
+            <button onClick={this.handleAddTextClick} className="add btn">
               Add Text
             </button>
           </div>
           <div>
-            <button className="add btn">
+            <button onClick={this.handleAddMultipleChoiceClick} className="add btn">
               Add Multiple-choice question
             </button>
           </div>
           <div>
-            <button className="add btn">
+            <button onClick={this.handleAddSubjectiveQuestionClick} className="add btn">
               Add subjective question
             </button>
           </div>

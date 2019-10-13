@@ -17,21 +17,18 @@ class Video extends Component {
   }
 
   // function to mount form component
-  handleEditClick = () => this.setState({openEditForm: true})
-
-  // function to unmount form component
-  handleCancel = () => this.setState({openEditForm: false})
+  toggleEditForm = () => this.setState({openEditForm: !this.state.openEditForm})
 
   // calls parent function
   handleUpdate = ({ youTubeID }) => {
     const updatedVideo = {
       id: this.props.id,
-      type: 'video',
+      type: 'Video',
       youTubeID
     }
     this.setState({ youTubeID })
     this.props.handleUpdate(updatedVideo)
-    this.handleCancel()
+    this.toggleEditForm()
   }
 
   handleDelete = () => {
@@ -44,14 +41,14 @@ class Video extends Component {
         {!this.state.openEditForm ? (
           <div className="flex-row">
             <iframe width="560" height="315"
-              title='foaiwjfoaw'
+              title={this.state.youTubeID}
               src={`https://www.youtube.com/embed/${this.props.youTubeID}`}
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
 
             <div className="operations">
-              <span onClick={this.handleEditClick} className="btn edit" ><i className="fas fa-pen"></i></span>
+              <span onClick={this.toggleEditForm} className="btn edit" ><i className="fas fa-pen"></i></span>
               <span onClick={this.handleDelete} className="btn delete"><i className="fas fa-trash"></i></span>
             </div>
           </div>
@@ -59,7 +56,7 @@ class Video extends Component {
           <VideoForm
             updateVideo={this.handleUpdate}
             youTubeID={this.state.youTubeID}
-            closeForm={this.handleCancel} />
+            closeForm={this.toggleEditForm} />
         )
       }
       </>
