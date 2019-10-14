@@ -54,7 +54,7 @@ class Intervention extends Component {
     const newDocument = {
       id: uuid.v4(),
       type: 'SubjectiveQuestion',
-      question: 'Do you like subjective questions?',
+      question: 'subjective question?',
     }
     this.props.createDocument(newDocument)
   }

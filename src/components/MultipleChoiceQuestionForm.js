@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid'
 import _ from 'lodash'
 
 class MultipleChoiceQuestionForm extends Component {
@@ -39,7 +40,7 @@ class MultipleChoiceQuestionForm extends Component {
 
   renderEditChoices = () => {
     return this.state.choices.map((choice, i) => (
-      <div key={`choices-checkbox-${i}`}>
+      <div key={uuid.v4()}>
         <input value={this.state.choices[i]} onChange={this.handleChoiceChange}
           name={`choice_${i}`} placeholder="Choice" type="text" />
         <span onClick={() => this.handleRemoveChoice(i)} className="btn cancel">
@@ -66,7 +67,7 @@ class MultipleChoiceQuestionForm extends Component {
       <form className="flex-row">
         <div>
           <label>
-            Question
+            <h2>Question</h2>
             <input value={this.state.question} onChange={this.handleChange}
               name="question" placeholder="Question" type="text" />
           </label>

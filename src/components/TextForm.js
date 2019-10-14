@@ -31,7 +31,7 @@ class TextForm extends Component {
       <form className="flex-row">
         <div>
           <input value={this.state.text} onChange={this.handleChange}
-            name="text" placeholder="Image Src" type="text" />
+            name="text" placeholder="Text" type="text" />
         </div>
         <div className="operations">
           <span onClick={this.handleSubmit} className="btn done" >

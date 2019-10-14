@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
-
 const Checkbox = ({ name, isSelected, onChange }) => (
   <label key={name}>
     <input
