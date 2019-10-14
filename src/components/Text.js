@@ -14,7 +14,7 @@ class Text extends Component {
   toggleEditForm = () => this.setState({openEditForm: !this.state.openEditForm})
 
   // calls parent function
-  handleUpdate = ({ text, imgSrc }) => {
+  handleUpdate = ({ text }) => {
     const updatedDocument = {
       id: this.props.id,
       type: 'Text',

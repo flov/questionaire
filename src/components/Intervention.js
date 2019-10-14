@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
+import './intervention.css'
 import Video from './Video';
 import Image from './Image';
 import Text from './Text';
@@ -25,7 +26,7 @@ class Intervention extends Component {
       id: uuid.v4(),
       type: 'Image',
       caption: 'example caption',
-      imgSrc: './example.png',
+      imgSrc: 'https://www.stopbreathethink.com/wp-content/uploads/2017/04/blog_breathe_animation.gif',
     }
     this.props.createDocument(newDocument)
   }
@@ -43,6 +44,8 @@ class Intervention extends Component {
     const newDocument = {
       id: uuid.v4(),
       type: 'MultipleChoiceQuestion',
+      question: 'example question',
+      choices: ['example choice 1', 'example choice 2'],
     }
     this.props.createDocument(newDocument)
   }
@@ -50,7 +53,8 @@ class Intervention extends Component {
   handleAddSubjectiveQuestionClick = () => {
     const newDocument = {
       id: uuid.v4(),
-      type: 'SubjectiveQuestion'
+      type: 'SubjectiveQuestion',
+      question: 'Do you like subjective questions?',
     }
     this.props.createDocument(newDocument)
   }

@@ -36,7 +36,7 @@ class Image extends Component {
         {!this.state.openEditForm ? (
           <div className="flex-row">
             <h1>{this.props.caption}</h1>
-            <img src="https://i.ytimg.com/vi/3I7qR4NO8Ag/maxresdefault.jpg"
+          <img src={this.props.imgSrc}
               alt={this.props.caption} />
 
             <div className="operations">
