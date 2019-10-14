@@ -17,7 +17,7 @@ class ImageForm extends Component {
     if (this.props.imgSrc) {
       this.props.handleUpdate({ imgSrc, caption })
     } else {
-      console.log('create video')
+      console.log('create document')
     }
   }
 

@@ -16,7 +16,7 @@ class TextForm extends Component {
     if (this.props.text) {
       this.props.handleUpdate({ text })
     } else {
-      console.log('create video')
+      console.log('create document')
     }
   }
 

@@ -1,23 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
-const Checkbox = ({ label, isSelected, onChange }) => (
-  <label key={label}>
+const Checkbox = ({ name, isSelected, onChange }) => (
+  <label key={name}>
     <input
       type="checkbox"
-      name={label}
-      checked={isSelected}
+      name={name}
       onChange={onChange}
       className="form-check-input"
     />
-    {label}
+    {name}
   </label>
-);
+)
 
 Checkbox.propTypes = {
-  label: PropTypes.string.isRequired,
-  isSelected: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 
-export default Checkbox;
+export default Checkbox

@@ -32,15 +32,15 @@ class MultipleChoiceQuestion extends Component {
   }
 
   handleChange = (e) => {
-    const {name, value} = e.target
-    value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const {name} = e.target
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
     this.setState({ [name]: value })
   }
 
   renderChoices = (choices) => {
     return choices.map((choice, i) => (
-      <Checkbox name={choice} isSelected={false} onChange={this.handleChange} />
+      <Checkbox name={choice} isSelected={false} onChange={this.handleChange} key={choice} />
     ))
   }
 
@@ -61,6 +61,7 @@ class MultipleChoiceQuestion extends Component {
           <MultipleChoiceQuestionForm
             handleUpdate={this.handleUpdate}
             question={this.props.question}
+            choices={this.props.choices}
             closeForm={this.toggleEditForm} />
         )
       }

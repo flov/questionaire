@@ -16,7 +16,7 @@ class VideoForm extends Component {
     if (this.props.youTubeID) {
       this.props.updateVideo({ youTubeID })
     } else {
-      console.log('create video')
+      console.log('create document')
     }
   }
 

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-input, body{
+input, textarea, body{
   font-family: 'Roboto', sans-serif;
 }
 
-input{
+input, textarea{
   font-size: 16px;
   padding: 8px;
   border-radius: 3px;
@@ -12,10 +12,14 @@ input{
   outline: none;
 }
 
-input:focus{
+input:focus, textarea:focus{
   border-color:#999;
 }
 
+textarea {
+  width: 90%;
+  height: 4em;
+}
 
 h1{
   color: rgb(0, 140, 255);
@@ -103,13 +107,17 @@ span.btn{
 
 .add{
   background: rgb(0, 81, 255);
+}
+span.add:hover {
+  transform: rotate(360deg);
+}
+
+button.add {
   margin: 10px 0 0 50%;
   transform: translate(-50%,0) scale(1);
   animation: elasticZoom 0.3s;
 }
-
-.add:hover{
-  background-color: rgb(74, 115, 250);
+button.add:hover {
   transform: translate(-50%,0) scale(1.2);
 }
 

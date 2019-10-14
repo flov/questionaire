@@ -16,8 +16,6 @@ export default function (state = initialState, action) {
     case UPDATE_DOCUMENT: {
       const updatedDocument = action.payload.document;
       return [...state].map(document => {
-        console.log("updated document", updatedDocument)
-        console.log("document", document)
         if(document.id === updatedDocument.id) {
           return updatedDocument
         } else {

@@ -16,7 +16,7 @@ class SubjectiveQuestionForm extends Component {
     if (this.props.question) {
       this.props.handleUpdate({ question })
     } else {
-      console.log('create video')
+      console.log('create document')
     }
   }
 
