@@ -1,4 +1,4 @@
-## Get.On Challenge
+## Challenge
 
 ### Outlining the architecture of the react app
 
