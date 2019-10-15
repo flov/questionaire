@@ -4,7 +4,7 @@
 
 A react/redux app that is coupled
 with a backend API written with fastify and mongodb.
-The api is documented with swagger.
+The api is documented with swagger
 
 As described in the challenge a client should be able to create:
 Images, Videos, Text, Multiple-choice questions, Subjective Questions
@@ -56,3 +56,22 @@ application_state: {
   ]
 }
 ```
+
+### Usage
+
+Development:
+
+* Start the backend server by running
+`node ./server/server.js`
+* And Start the development server by running
+```javascript
+npm install
+npm start
+```
+
+Production build:
+
+`yarn build`
+`node ./server/server.js`
+
+
