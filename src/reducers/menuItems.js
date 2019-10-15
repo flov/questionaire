@@ -4,7 +4,7 @@ import { CREATE, READ, UPDATE, DELETE } from '../actions';
 const initialState = []
 
 //reducer function
-export default function (state = initialState, action) {
+export default function myFunc(state = initialState, action) {
   switch (action.type) {
 
     // handles creation of data

@@ -7,13 +7,11 @@ import {
 
 const initialState = []
 
-export default function (state = initialState, action) {
+export default function reducerFunc(state = initialState, action) {
   switch (action.type) {
-    case CREATE_DOCUMENT: return [...state, action.payload.document]
-
-    case READ_DOCUMENTS: return state
-
-    case UPDATE_DOCUMENT: {
+    case READ_DOCUMENTS:
+      return state
+    case UPDATE_DOCUMENT:
       const updatedDocument = action.payload.document;
       return [...state].map(document => {
         if(document.id === updatedDocument.id) {
@@ -22,12 +20,10 @@ export default function (state = initialState, action) {
           return document
         }
       })
-    }
-
-    case DELETE_DOCUMENT: {
+    case DELETE_DOCUMENT:
       return [...state].filter(document => document.id !== action.payload.id)
-    }
-
+    case CREATE_DOCUMENT:
+      return [...state, action.payload.document]
     default:
       return state
   }
