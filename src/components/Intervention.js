@@ -109,6 +109,8 @@ class Intervention extends Component {
     const { loading, errors } = this.props
 
     return (
+      <>
+      <h1>Intervention</h1>
       <div className="navigation-grid">
         <div className={"col-left col"}>
           <div>
@@ -138,23 +140,38 @@ class Intervention extends Component {
           </div>
         </div>
         <div className={"col col-right"}>
-          {
-            this.props.documents.length > 0 ? this.props.documents.map((document, i) => {
-            return this.showDocument(document)
-          }) : (
-            <h2>No documents created yet</h2>
-          )}
+            {
+              loading ? (
+              <div className="menu-row">
+                <h1>loading...</h1>
+              </div>
+            ) : errors ? (
+              <div className="menu-row">
+                <h1>Error in loading documents</h1>
+              </div>
+            ) : (
+              this.props.documents.length > 0 ? this.props.documents.map((document, i) => {
+                return this.showDocument(document)
+              }) : (
+                <h2>No documents created yet</h2>
+              )
+            )
+          }
         </div>
       </div>
+      </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  loading: state.loading,
-  errors: state.errors,
-  documents: state.documents.documents,
-})
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    loading: state.documents.loading,
+    errors: state.documents.errors,
+    documents: state.documents.documents,
+  }
+}
 
 export default connect(mapStateToProps, {
   readDocuments,
