@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
+import axios from 'axios';
 
 import './intervention.css'
 import Video from './Video';
@@ -9,7 +10,11 @@ import Text from './Text';
 import SubjectiveQuestion from './SubjectiveQuestion';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 
-import { createDocument, updateDocument, deleteDocument } from '../actions'
+import {
+  readDocuments,
+  createDocument,
+  updateDocument,
+  deleteDocument } from '../actions'
 
 class Intervention extends Component {
   handleAddVideoClick = () => {
@@ -18,7 +23,7 @@ class Intervention extends Component {
       youTubeID: 'GLy2rYHwUqY',
       type: 'Video'
     }
-    this.props.createDocument(newDocument)
+    this.postDocument(newDocument)
   }
 
   handleAddImageClick = () => {
@@ -26,9 +31,9 @@ class Intervention extends Component {
       id: uuid.v4(),
       type: 'Image',
       caption: 'example caption',
-      imgSrc: 'https://www.stopbreathethink.com/wp-content/uploads/2017/04/blog_breathe_animation.gif',
+      imgSrc: 'https://midatlanticconsulting.com/blog/wp-content/uploads/2017/05/5_256x256bb.jpg',
     }
-    this.props.createDocument(newDocument)
+    this.postDocument(newDocument)
   }
 
   handleAddTextClick = () => {
@@ -37,7 +42,8 @@ class Intervention extends Component {
       type: 'Text',
       text: 'lorem ipsum',
     }
-    this.props.createDocument(newDocument)
+
+    this.postDocument(newDocument)
   }
 
   handleAddMultipleChoiceClick = () => {
@@ -47,7 +53,7 @@ class Intervention extends Component {
       question: 'example question',
       choices: ['example choice 1', 'example choice 2'],
     }
-    this.props.createDocument(newDocument)
+    this.postDocument(newDocument)
   }
 
   handleAddSubjectiveQuestionClick = () => {
@@ -56,12 +62,27 @@ class Intervention extends Component {
       type: 'SubjectiveQuestion',
       question: 'subjective question?',
     }
-    this.props.createDocument(newDocument)
+    this.postDocument(newDocument)
   }
 
-  handleUpdateDocument = (document) => this.props.updateDocument(document)
+  postDocument(newDocument) {
+    axios.post('/api/documents', { ...newDocument }).then(({data : {type}}) => {
+      this.props.createDocument(newDocument)
+    }).catch(e => console.log("Addition failed, Error", e));
+  }
 
-  handleDeleteDocument = (id) => this.props.deleteDocument(id)
+  handleUpdateDocument = (document) => {
+    axios.put(`/api/documents/${document.id}`, {document}).then(({data: {type}}) => {
+      this.props.updateDocument(document)
+      console.log(`Item - ${type} updated successfully`);
+    }).catch(e => console.log('Updating failed, Error', e))
+  }
+
+  handleDeleteDocument = (id) => {
+    axios.delete(`/api/documents/${id}`).then(() => {
+      this.props.deleteDocument(id)
+    }).catch(e => console.log("Deletion failed, Error", e))
+  }
 
   showDocument(document) {
     // mapping the type string to the component
@@ -80,32 +101,38 @@ class Intervention extends Component {
       handleUpdate={this.handleUpdateDocument} />
   }
 
+  componentDidMount() {
+    this.props.readDocuments()
+  }
+
   render() {
+    const { loading, errors } = this.props
+
     return (
       <div className="navigation-grid">
         <div className={"col-left col"}>
           <div>
-            <button onClick={this.handleAddVideoClick} className="add btn">
+            <button onClick={this.handleAddVideoClick} >
               Add Video
             </button>
           </div>
           <div>
-            <button onClick={this.handleAddImageClick} className="add btn">
+            <button onClick={this.handleAddImageClick} >
               Add Image
             </button>
           </div>
           <div>
-            <button onClick={this.handleAddTextClick} className="add btn">
+            <button onClick={this.handleAddTextClick} >
               Add Text
             </button>
           </div>
           <div>
-            <button onClick={this.handleAddMultipleChoiceClick} className="add btn">
+            <button onClick={this.handleAddMultipleChoiceClick} >
               Add Multiple-choice question
             </button>
           </div>
           <div>
-            <button onClick={this.handleAddSubjectiveQuestionClick} className="add btn">
+            <button onClick={this.handleAddSubjectiveQuestionClick} >
               Add subjective question
             </button>
           </div>
@@ -124,10 +151,13 @@ class Intervention extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  documents: state.documents,
+  loading: state.loading,
+  errors: state.errors,
+  documents: state.documents.documents,
 })
 
 export default connect(mapStateToProps, {
+  readDocuments,
   createDocument,
   updateDocument,
   deleteDocument})(Intervention);

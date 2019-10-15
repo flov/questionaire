@@ -1,7 +1,35 @@
+import axios from 'axios';
+
 export const CREATE_DOCUMENT = "CREATE_DOCUMENT"
 export const READ_DOCUMENTS = "READ_DOCUMENTS"
 export const UPDATE_DOCUMENT = "UPDATE_DOCUMENT"
 export const DELETE_DOCUMENT = "DELETE_DOCUMENT"
+export const FETCH_DOCUMENTS_BEGIN = "FETCH_DOCUMENTS_BEGIN";
+export const FETCH_DOCUMENTS_SUCCESS = "FETCH_DOCUMENTS_SUCCESS";
+export const FETCH_DOCUMENTS_FAILURE = "FETCH_DOCUMENTS_FAILURE";
+
+export const fetchDocumentsBegin = () => ({
+    type: FETCH_DOCUMENTS_BEGIN
+})
+export const fetchDocumentsSuccess = documents => ({
+    type: FETCH_DOCUMENTS_SUCCESS,
+    payload: { documents }
+})
+export const fetchDocumentsFailure = errors => ({
+    type: FETCH_DOCUMENTS_FAILURE,
+    payload: { errors }
+})
+
+export const readDocuments = () => {
+  return (dispatch) => {
+    dispatch(fetchDocumentsBegin())
+    return axios.get('/api/documents')
+      .then(({data}) => {
+        dispatch(fetchDocumentsSuccess(data))
+      })
+      .catch(error => dispatch(fetchDocumentsFailure(error)))
+  }
+}
 
 export const createDocument = (document) => ({
   type: CREATE_DOCUMENT,
