@@ -23,7 +23,11 @@ const updateDocument = async (req, reply) => {
   try {
     const { id } = req.params;
     const { document } = req.body;
-    const updatedItem = await Document.findOneAndUpdate({id}, document, { new: true });
+    const updatedItem = await Document.findOneAndUpdate(
+      {id}, // Search query
+      document, // values to update
+      { new: true } // return updated doc
+    );
     return updatedItem;
   }
   catch (err) { console.log(err) }

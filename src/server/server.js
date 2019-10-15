@@ -13,10 +13,15 @@ mongoose.connect('mongodb://localhost:27017/intervention', {useNewUrlParser: tru
 //handles GET / request
 fastify.get('/', async (request, reply) => {
   try {
-    return {message : "hello, world!"}
+    reply.sendFile('index.html')
   }
   catch (e) { console.log(e) }
 });
+
+const DistPath = path.join(__dirname, '..', '..', 'build')
+fastify.register(require('fastify-static'), {
+  root: DistPath,
+})
 
 //iterating over all the routes and registering them with fastify
 routes.forEach(route => fastify.route(route))
