@@ -2,12 +2,15 @@
 
 ### Outlining the architecture of the react app
 
-First I will develop the react/redux app that will then be coupled
-with a backend written with fastify and mongodb
+A react/redux app that is coupled
+with a backend API written with fastify and mongodb.
+The api is documented with swagger.
 
-As described in the challenge those should be:
+As described in the challenge a client should be able to create:
 Images, Videos, Text, Multiple-choice questions, Subjective Questions
-The screen will be divided into two columns on the left there will be a
+for clients.
+
+The screen is divided into two columns on the left there will be a
 menu to display the components that are available for the therapist and
 on the right the intervention that has been created by clicking on the
 components on the left.
@@ -20,7 +23,7 @@ components on the left.
 ```
 
 When clicking on one of the components on the left, it will then create
-an EditableComponent in the intervention on the right.
+a Component in the intervention on the right.
 
 for example:
 ```
@@ -33,7 +36,7 @@ for example:
 </Intervention>
 ```
 
-the application store would hold the data of the intervention
+the application store holds the data of the intervention
 and gets persisted to mongodb with fastify and mongoose in the backend
 
 ```
@@ -43,7 +46,7 @@ application_state: {
     { type: 'Video', link: 'youtube link' },
     { type: 'Text', text: 'youtube link' },
     { type: 'MultipleChoiceQuestion', question: 'Question',
-      possibleAnswers: [
+      choices: [
         'Answer 1',
         'Answer 2',
         'Answer 3',
