@@ -40,7 +40,9 @@ class MultipleChoiceQuestion extends Component {
 
   renderChoices = (choices) => {
     return choices.map((choice, i) => (
-      <Checkbox name={choice} isSelected={false} onChange={this.handleChange} key={choice} />
+      <div>
+        <Checkbox name={choice} isSelected={false} onChange={this.handleChange} key={choice} />
+      </div>
     ))
   }
 

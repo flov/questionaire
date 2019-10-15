@@ -1,16 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 input, textarea, body{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
-input, textarea{
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, textarea, button{
   font-size: 16px;
   padding: 8px;
   border-radius: 3px;
   border: 1px solid #ccc;
   outline: none;
 }
+
 
 input:focus, textarea:focus{
   border-color:#999;
@@ -46,12 +53,14 @@ h1 i{
   border-radius: 5px;
 }
 
-button.btn{
+button{
   padding: 9px;
-  color: white;
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
+}
+button:hover {
+  background-color: #eee;
 }
 
 span.btn{
@@ -136,10 +145,8 @@ button.add:hover {
 .flex-row{
   border: 1px solid #aaa;
   border-radius: 5px;
-  display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  width: 100%;
   padding: 0 10px;
 }
 

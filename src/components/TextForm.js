@@ -30,7 +30,7 @@ class TextForm extends Component {
     return (
       <form className="flex-row">
         <div>
-          <input value={this.state.text} onChange={this.handleChange}
+          <textarea value={this.state.text} onChange={this.handleChange}
             name="text" placeholder="Text" type="text" />
         </div>
         <div className="operations">
